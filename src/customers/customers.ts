@@ -23,7 +23,4 @@ export function customersRoutes(app: express.Application): void {
     res.send(customer);
   });
 
-  app.get("/", (req: Request, res: Response) => {
-    res.send("adsasd");
-  });
 }
