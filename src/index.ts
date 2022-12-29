@@ -16,10 +16,13 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan("combined"));
 
-// app.get("/", (req: Request, res: Response) => {
-//   res.send(ads);
-// });
+app.get('/', (req, res) => {
+  res.send('Hey, the API is running 🥳')
+})
 
 app.listen(3001, () => {
   console.log("listening on port 3001");
 });
+
+// Export the Express API
+module.exports = app;
