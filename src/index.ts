@@ -7,7 +7,8 @@ import { customersRoutes } from "./customers/customers";
 import * as dotenv from "dotenv";
 import { recipesRoutes } from "./recipes/recipes";
 
-dotenv.config({ path: ".env.local" });
+// dotenv.config({ path: ".env.local" });
+dotenv.config();
 const app = express();
 
 customersRoutes(app);
