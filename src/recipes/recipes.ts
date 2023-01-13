@@ -5,7 +5,7 @@ import { recipeBasedOnHop } from "../services/HopBased";
 export async function recipesRoutes(app: express.Application) {
   app.get("/recipes", async (req: Request, res: Response) => {
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: process.env.API_KEY!,
       organization: "org-jRvZsONs0jUqQGKqKgLrV0O1",
     });
 
