@@ -64,4 +64,5 @@ jobs:
         with:
           app-name: 'recipe-ai-api'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0C5EF1DE7F814B4AADA8DF5CEF0F2013 }}
-          # package: build/
+          package: .
+          start-up-command: "node build/index.js"
