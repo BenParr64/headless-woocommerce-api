@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          
+
       - name: npm install, build, and test
         run: |
           npm install
@@ -48,11 +48,20 @@ jobs:
           path: build/
       - name: Check the build folder
         run: ls -la build
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+
+      # - name: 'Deploy to Azure Web App'
+      #   id: deploy-to-webapp
+      #   uses: azure/webapps-deploy@v2
+      #   with:
+      #     app-name: 'recipe-ai-api'
+      #     slot-name: 'Production'
+      #     publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0C5EF1DE7F814B4AADA8DF5CEF0F2013 }}
+      #     package: build/
+
+      - name: 'Deploy to Azure WebApp'
+        id: deploy-to-webapp 
+        uses: azure/webapps-deploy@0b651ed7546ecfc75024011f76944cb9b381ef1e
         with:
           app-name: 'recipe-ai-api'
-          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0C5EF1DE7F814B4AADA8DF5CEF0F2013 }}
           package: build/
