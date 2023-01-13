@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-          path: build/
+          # path: build/
       - name: Check the build folder
         run: ls -la build
 
