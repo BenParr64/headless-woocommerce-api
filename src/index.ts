@@ -7,21 +7,19 @@ import { customersRoutes } from "./customers/customers";
 import * as dotenv from "dotenv";
 import { recipesRoutes } from "./recipes/recipes";
 
-// dotenv.config({ path: ".env.local" });
-dotenv.config();
+dotenv.config({ path: ".env.local" });
+// dotenv.config();
 const app = express();
+app.use(cors());
+
 
 customersRoutes(app);
 recipesRoutes(app);
 
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 app.use(morgan("combined"));
+
 
 app.get("/", (req, res) => {
   res.send("Hey, the API is running 🥳");
