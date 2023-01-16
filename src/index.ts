@@ -23,8 +23,10 @@ app.get("/", (req, res) => {
   res.send("Hey, the API is running 🥳");
 });
 
-app.listen(3001, () => {
-  console.log("listening on port 3001");
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 // Export the Express API
