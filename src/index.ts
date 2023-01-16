@@ -16,7 +16,11 @@ recipesRoutes(app);
 
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
