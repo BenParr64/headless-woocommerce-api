@@ -12,7 +12,6 @@ dotenv.config({ path: ".env.local" });
 const app = express();
 app.use(cors());
 
-
 customersRoutes(app);
 recipesRoutes(app);
 

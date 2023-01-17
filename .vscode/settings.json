@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/10405e1a-dfbb-424f-b3ac-c4be6f3ee8a9/AppServices/subscriptions/10405e1a-dfbb-424f-b3ac-c4be6f3ee8a9/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/ai-recipes",
+    "appService.deploySubpath": "."
+}

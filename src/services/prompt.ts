@@ -1,4 +1,4 @@
-export const recipeBasedOnHop = ({
+export const generateRecipePrompt = ({
   hop,
   style,
 }: {
@@ -14,23 +14,30 @@ export const recipeBasedOnHop = ({
   Can you also include an estimated abv of the recipe
   Output the values as seen below template
   Come up with a creative recipe name.
+  Give the result in valid json based off the format below:
 
-  <h2>{recipe name} (25L)</h2>
-  <h3>Style: {style}</h3>
-  <h3>Malts: </h3>
-  <ul>
-    <li>{malts list}</li>
-  </ul>
-  <h3>Hops:</h3>
-  <ul>
-    <li>{hops list}<li>
-  </ul>
-  <h3>Yeast: {yeast}</h3>
-  <h3>{colour} {ebc}</h3>
-  <h3>{abv} {abv}</h3>
+  {
+    "title": "{recipeName}",
+    "style": "{style}",
+    "malts": [
+      {
+        "name": "{name}",
+        "quantity": "{quantityInGrams}"
+      }
+    ],
+    "hops": [
+      {
+        "name": "{name}",
+        "quantity": "{quantityInGrams}"
+        "timing": "{timing}",
+        "type": "{type}"
+      }
+    ],
+    "yeast": "{yeast}",
+    "abv": "{abv}",
+    "reasoningHtml": "{reasoningHtml}"
+  }
 
-  Reasoning: 
-  <p>{reasoning}</p>
 
   ${hop && 'Keyword: ' + hop + '\n Recipe:'}
     `

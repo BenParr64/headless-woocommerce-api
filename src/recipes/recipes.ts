@@ -1,6 +1,7 @@
+import { json } from "body-parser";
 import express, { Request, Response } from "express";
 import { Configuration, OpenAIApi } from "openai";
-import { recipeBasedOnHop } from "../services/HopBased";
+import { generateRecipePrompt } from "../services/prompt";
 
 export async function recipesRoutes(app: express.Application) {
   app.get("/recipes", async (req: Request, res: Response) => {
@@ -31,7 +32,11 @@ export async function recipesRoutes(app: express.Application) {
       });
       console.log(completion.data.choices[0].text);
 
-      res.status(200).json({ result: completion.data.choices[0].text });
+      const rawData = completion.data.choices[0].text;
+
+      const formatted = JSON.parse(rawData!)
+
+      res.status(200).json({ result: formatted});
     } catch (error) {
       // Consider adjusting the error handling logic for your use case
       res.status(500).json({ error });
@@ -40,6 +45,6 @@ export async function recipesRoutes(app: express.Application) {
 }
 
 function generatePrompt(hop: string) {
-  console.log(recipeBasedOnHop({ hop }));
-  return recipeBasedOnHop({ hop });
+  console.log(generateRecipePrompt({ hop }));
+  return generateRecipePrompt({ hop });
 }
